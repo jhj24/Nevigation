@@ -11,6 +11,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn_default.setOnClickListener {
+            startActivity<CommonNavigationActivity>()
+        }
+        btn_gradient.setOnClickListener {
             startActivity<NavigationActivity>()
         }
     }

@@ -6,25 +6,42 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
-import android.widget.LinearLayout
-import com.jhj.navigation.layoutres.NavigationBarLayout
+import android.view.ViewGroup
+import com.jhj.navigation.layoutres.CommonNavigationBarLayout
 import com.jhj.navigation.layoutres.NavigationLayout
-import com.jhj.navigation.pagechangelistener.GradientPageChangeListener
+import com.jhj.navigation.pagechangelistener.CommonPageChangeListener
 
-abstract class BaseNavigationActivity : AppCompatActivity() {
+/**
+ * 普通基础 Activity
+ *
+ * Created by jhj on 18-11-15.
+ */
+abstract class BaseCommonNavigationActivity : AppCompatActivity() {
 
 
     abstract val layoutRes: NavigationLayout
-    abstract val layoutBottomBarRes: NavigationBarLayout
-    abstract val fragmentList: List<BaseNavigationFragment>
+    abstract val layoutBottomBarRes: CommonNavigationBarLayout
+    abstract val fragmentList: List<BaseCommonNavigationFragment>
+
+    private var pageChangeListener: ViewPager.OnPageChangeListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(layoutRes.getNavigationLayoutRes())
         val viewPager = findViewById<ViewPager>(layoutRes.getNavigationViewPagerId())
-        val navigationBar = findViewById<LinearLayout>(layoutRes.getNavigationBottomBarId())
+        val navigationBar = findViewById<ViewGroup>(layoutRes.getNavigationBarId())
         viewPager.adapter = MyPageAdapter(supportFragmentManager, fragmentList)
-        viewPager.addOnPageChangeListener(GradientPageChangeListener(viewPager, fragmentList, layoutBottomBarRes, navigationBar))
+        val listener = CommonPageChangeListener(viewPager, fragmentList, layoutBottomBarRes, navigationBar)
+        listener.setOnPageChangeListener(pageChangeListener)
+        viewPager.addOnPageChangeListener(listener)
+    }
+
+
+    /**
+     * ViewPager.addPageChangeListener运行后的监听器
+     */
+    fun setOnPageChangerListener(listener: ViewPager.OnPageChangeListener) {
+        this.pageChangeListener = listener
     }
 
 

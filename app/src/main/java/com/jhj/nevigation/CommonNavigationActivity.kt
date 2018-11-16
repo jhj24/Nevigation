@@ -1,13 +1,13 @@
 package com.jhj.nevigation
 
 import android.os.Bundle
-import com.jhj.navigation.base.BaseGradientNavigationActivity
-import com.jhj.navigation.base.BaseGradientNavigationFragment
-import com.jhj.navigation.layoutres.GradientNavigationBarLayout
+import com.jhj.navigation.base.BaseCommonNavigationActivity
+import com.jhj.navigation.base.BaseCommonNavigationFragment
+import com.jhj.navigation.layoutres.CommonNavigationBarLayout
 import com.jhj.navigation.layoutres.NavigationLayout
 import kotlinx.android.synthetic.main.activity_navigation.*
 
-class NavigationActivity : BaseGradientNavigationActivity() {
+class CommonNavigationActivity : BaseCommonNavigationActivity() {
 
     override val layoutRes: NavigationLayout
         get() = object : NavigationLayout {
@@ -26,29 +26,25 @@ class NavigationActivity : BaseGradientNavigationActivity() {
 
         }
 
-    override val layoutBottomBarRes: GradientNavigationBarLayout
-        get() = object : GradientNavigationBarLayout {
-            override fun getNavigationBarLayoutRes(): Int {
-                return R.layout.layout_buttom_item;
-            }
-
-            override fun getNavigationBarDefaultImageId(): Int {
+    override val layoutBottomBarRes: CommonNavigationBarLayout
+        get() = object : CommonNavigationBarLayout {
+            override fun getNavigationBarImageViewId(): Int {
                 return R.id.imageViewDefault
             }
 
-            override fun getNavigationBarDefaultTextId(): Int {
+            override fun getNavigationBarTextViewId(): Int {
                 return R.id.itemTitleDefault
             }
 
-            override fun getNavigationBarSelectedTextId(): Int {
-                return R.id.itemTitleSelected
+            override fun getNavigationBarLayoutRes(): Int {
+                return R.layout.layout_buttom_item1;
             }
 
         }
-    override val fragmentList: List<BaseGradientNavigationFragment>
+    override val fragmentList: List<BaseCommonNavigationFragment>
         get() {
-            val list = arrayListOf<BaseGradientNavigationFragment>()
-            list.add(getFragment(0, "首页", R.mipmap.main_home0))
+            val list = arrayListOf<BaseCommonNavigationFragment>()
+            list.add(getFragment(0, "首页", R.drawable.bg_image_selected))
             list.add(getFragment(1, "通讯录", R.mipmap.main_contacts_0))
             list.add(getFragment(2, "功能", R.mipmap.main_function0))
             list.add(getFragment(3, "我的", R.mipmap.main_me0))
@@ -64,8 +60,8 @@ class NavigationActivity : BaseGradientNavigationActivity() {
 
     }
 
-    private fun getFragment(status: Int, title: String, image: Int): NavigationFragment {
-        val fragment = NavigationFragment()
+    private fun getFragment(status: Int, title: String, image: Int): CommonNavigationFragment {
+        val fragment = CommonNavigationFragment()
         val bundle = Bundle()
         bundle.putInt("status", status)
         bundle.putString("title", title)
