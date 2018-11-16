@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/bottomItem"
+    android:layout_width="0dp"
+    android:layout_height="match_parent"
+    android:layout_weight="1"
+    android:paddingTop="5dp">
+
+    <ImageView
+        android:id="@+id/imageViewDefault"
+        android:layout_width="40dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="2dp"
+        android:padding="3dp"
+        android:src="@mipmap/main_function0" />
+
+    <View
+        android:id="@+id/line"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:id="@+id/red_dot"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_alignLeft="@id/line"
+        android:layout_alignTop="@id/imageViewDefault"
+        android:layout_marginLeft="7dp"
+        android:layout_marginBottom="7dp"
+        android:gravity="center"
+        android:minWidth="15dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:text="11"
+        android:textColor="#ffffff"
+        android:textSize="10sp"
+        android:visibility="gone" />
+
+    <TextView
+        android:id="@+id/itemTitleSelected"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewDefault"
+        android:layout_centerHorizontal="true"
+        android:alpha="0"
+        android:text="首页"
+        android:textColor="#00A0E0"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/itemTitleDefault"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/imageViewDefault"
+        android:layout_centerHorizontal="true"
+        android:text="首页"
+        android:textColor="#999999"
+        android:textSize="13sp" />
+</RelativeLayout>
