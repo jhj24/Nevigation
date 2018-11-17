@@ -1,8 +1,9 @@
-package com.jhj.nevigation
+package com.jhj.nevigation.common
 
 import android.os.Bundle
 import android.view.View
 import com.jhj.navigation.base.BaseCommonNavigationFragment
+import com.jhj.nevigation.R
 import kotlinx.android.synthetic.main.fragment_navigation.view.*
 
 class CommonNavigationFragment : BaseCommonNavigationFragment() {

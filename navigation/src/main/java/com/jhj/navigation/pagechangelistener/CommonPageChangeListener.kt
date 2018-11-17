@@ -23,6 +23,26 @@ class CommonPageChangeListener(
     }
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+        val currentItem = viewPager.currentItem
+        val nextItem: Int
+
+        if (position == currentItem) {//向右
+            if (currentItem == fragmentList.size - 1)
+                return
+            nextItem = currentItem + 1
+            val barItemCurrent = navigationBarItemList[currentItem]
+            val barItemNext = navigationBarItemList[nextItem]
+            setBottomBarItemSelected(barItemCurrent, 1f)
+            setBottomBarItemSelected(barItemNext, 0f)
+        } else {//向左
+            if (currentItem == 0)
+                return
+            nextItem = currentItem - 1
+            val barItemCurrent = navigationBarItemList[currentItem]
+            val barItemNext = navigationBarItemList[nextItem]
+            setBottomBarItemSelected(barItemCurrent,1f)
+            setBottomBarItemSelected(barItemNext, 0f)
+        }
         listener?.onPageScrolled(position, positionOffset, positionOffsetPixels)
     }
 

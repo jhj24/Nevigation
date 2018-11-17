@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="2dp"
         android:padding="3dp"
-        android:src="@drawable/bg_image_selected" />
+        android:src="@drawable/bg_contacts_selected" />
 
     <View
         android:id="@+id/line"

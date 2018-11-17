@@ -1,19 +1,20 @@
-package com.jhj.nevigation
+package com.jhj.nevigation.common
 
 import android.os.Bundle
 import com.jhj.navigation.base.BaseCommonNavigationActivity
 import com.jhj.navigation.base.BaseCommonNavigationFragment
 import com.jhj.navigation.layoutres.CommonNavigationBarLayout
 import com.jhj.navigation.layoutres.NavigationRootLayout
+import com.jhj.nevigation.R
 import kotlinx.android.synthetic.main.activity_navigation.*
 
-class CommonNavigationActivity : BaseCommonNavigationActivity() {
+class CommonTextNavigationActivity : BaseCommonNavigationActivity() {
 
     override val rootLayout: NavigationRootLayout
         get() = object : NavigationRootLayout {
 
             override fun getNavigationLayoutRes(): Int {
-                return R.layout.activity_navigation
+                return R.layout.activity_navigation_text
             }
 
             override fun getNavigationViewPagerId(): Int {
@@ -37,28 +38,20 @@ class CommonNavigationActivity : BaseCommonNavigationActivity() {
             }
 
             override fun getNavigationBarLayoutRes(): Int {
-                return R.layout.layout_buttom_item1;
+                return R.layout.layout_top_text_item
             }
 
         }
     override val fragmentList: List<BaseCommonNavigationFragment>
         get() {
             val list = arrayListOf<BaseCommonNavigationFragment>()
-            list.add(getFragment(0, "首页", R.drawable.bg_image_selected))
+            list.add(getFragment(0, "首页", R.drawable.bg_contacts_selected))
             list.add(getFragment(1, "通讯录", R.mipmap.main_contacts_0))
             list.add(getFragment(2, "功能", R.mipmap.main_function0))
             list.add(getFragment(3, "我的", R.mipmap.main_me0))
             return list
         }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewPager.offscreenPageLimit = 3
-        viewPager.currentItem = 2
-
-
-    }
 
     private fun getFragment(status: Int, title: String, image: Int): CommonNavigationFragment {
         val fragment = CommonNavigationFragment()

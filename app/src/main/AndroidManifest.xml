@@ -19,8 +19,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".NavigationActivity" />
-        <activity android:name=".CommonNavigationActivity" />
+        <activity android:name=".gradient.NavigationActivity" />
+        <activity android:name=".common.CommonNavigationActivity" />
+        <activity android:name=".common.CommonTextNavigationActivity" />
     </application>
 
 </manifest>

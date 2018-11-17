@@ -18,4 +18,10 @@
         android:layout_height="wrap_content"
         android:text="默认" />
 
+    <Button
+        android:id="@+id/btn_top_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="顶部只有文字" />
+
 </LinearLayout>

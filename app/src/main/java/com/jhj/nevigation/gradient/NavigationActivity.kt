@@ -1,12 +1,12 @@
-package com.jhj.nevigation
+package com.jhj.nevigation.gradient
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.v4.view.ViewPager
 import com.jhj.navigation.base.BaseGradientNavigationActivity
 import com.jhj.navigation.base.BaseGradientNavigationFragment
 import com.jhj.navigation.layoutres.GradientNavigationBarLayout
 import com.jhj.navigation.layoutres.NavigationRootLayout
+import com.jhj.nevigation.R
 import kotlinx.android.synthetic.main.activity_navigation.*
 
 class NavigationActivity : BaseGradientNavigationActivity() {
@@ -65,8 +65,7 @@ class NavigationActivity : BaseGradientNavigationActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewPager.offscreenPageLimit = 3
-        viewPager.currentItem = 2
+
 
 
     }
