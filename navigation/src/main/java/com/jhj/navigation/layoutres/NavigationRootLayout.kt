@@ -8,17 +8,24 @@ import android.support.annotation.LayoutRes
  *
  * Created by jhj on 18-11-15.
  */
-interface NavigationLayout {
+interface NavigationRootLayout {
 
     /**
-     * ViewPager　和 导航栏所在的布局res
+     * activity 布局的 layoutRes
      */
     @LayoutRes
     fun getNavigationLayoutRes(): Int
 
+    /**
+     * ViewPager 的 id
+     */
     @IdRes
     fun getNavigationViewPagerId(): Int
 
+
+    /**
+     * 导航栏的父布局　id
+     */
     @IdRes
     fun getNavigationBarId(): Int
 }

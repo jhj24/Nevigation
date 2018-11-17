@@ -1,13 +1,10 @@
 package com.jhj.navigation.pagechangelistener
 
 import android.graphics.Color
+import android.support.annotation.ColorRes
 import android.support.v4.view.ViewPager
-import android.view.LayoutInflater
-import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import com.jhj.navigation.base.BaseGradientNavigationFragment
-import com.jhj.navigation.layoutres.GradientNavigationBarLayout
+import com.jhj.navigation.model.NavigationBarItem
 
 
 /**
@@ -18,37 +15,21 @@ import com.jhj.navigation.layoutres.GradientNavigationBarLayout
 class GradientPageChangeListener(
         val viewPager: ViewPager,
         private val fragmentList: List<BaseGradientNavigationFragment>,
-        val layout: GradientNavigationBarLayout,
-        navigationBarView: ViewGroup) : ViewPager.OnPageChangeListener {
-
-    private val navigationBarItemList = arrayListOf<NavigationBarItem>()
+        private val navigationBarItemList: List<NavigationBarItem>) : ViewPager.OnPageChangeListener {
 
 
-    init {
-        val barLayoutRes = layout.getNavigationBarLayoutRes()
-        for (i in fragmentList.indices) {
-            val fragment = fragmentList[i]
-            val view = LayoutInflater.from(navigationBarView.context).inflate(barLayoutRes, navigationBarView, false)
-            val textDefault = view.findViewById<TextView>(layout.getNavigationBarDefaultTextId())
-            val textSelected = view.findViewById<TextView>(layout.getNavigationBarSelectedTextId())
-            val imageViewDefault = view.findViewById<ImageView>(layout.getNavigationBarDefaultImageId())
-            val navigationBarItem = NavigationBarItem(textDefault, textSelected, imageViewDefault)
-
-            view.setOnClickListener {
-                viewPager.setCurrentItem(i, false)
-            }
-            navigationBarView.addView(view)
-            navigationBarItem.titleSelected.text = fragment.title
-            navigationBarItem.titleDefault.text = fragment.title
-            navigationBarItem.imageViewDefault.setImageResource(fragment.iconDefault)
-            navigationBarItemList.add(navigationBarItem)
-        }
-    }
+    @ColorRes
+    private var imageSelectedColor: Int? = null
 
     private var listener: ViewPager.OnPageChangeListener? = null
 
+
     fun setOnPageChangeListener(listener: ViewPager.OnPageChangeListener?) {
         this.listener = listener
+    }
+
+    fun setGradientResultColor(@ColorRes color: Int?) {
+        this.imageSelectedColor = color
     }
 
 
@@ -97,25 +78,20 @@ class GradientPageChangeListener(
 
 
     private fun setBottomBarItemSelected(navigationBarItem: NavigationBarItem, percent: Float) {
-        navigationBarItem.titleSelected.alpha = percent
-        navigationBarItem.titleDefault.alpha = 1 - percent
+        navigationBarItem.textViewSelected?.alpha = percent
+        navigationBarItem.textViewDefault?.alpha = 1 - percent
 
-        navigationBarItem.imageViewDefault.scaleX = 1f + 0.15f * percent
-        navigationBarItem.imageViewDefault.scaleY = 1f + 0.15f * percent
+        navigationBarItem.imageViewDefault?.scaleX = 1f + 0.15f * percent
+        navigationBarItem.imageViewDefault?.scaleY = 1f + 0.15f * percent
 
-        val textColor = navigationBarItem.titleSelected.currentTextColor
+        val textColor = imageSelectedColor ?: navigationBarItem.textViewSelected?.currentTextColor
 
-        navigationBarItem.imageViewDefault.setColorFilter(Color.argb(
-                (0xFF * percent).toInt(),
-                Color.red(textColor),
-                Color.green(textColor),
-                Color.blue(textColor))
-        )
+        textColor?.let {
+            navigationBarItem.imageViewDefault?.setColorFilter(Color.argb(
+                    (0xFF * percent).toInt(),
+                    Color.red(it),
+                    Color.green(it),
+                    Color.blue(it)))
+        }
     }
-
-    data class NavigationBarItem(
-            var titleDefault: TextView,
-            var titleSelected: TextView,
-            var imageViewDefault: ImageView
-    )
 }

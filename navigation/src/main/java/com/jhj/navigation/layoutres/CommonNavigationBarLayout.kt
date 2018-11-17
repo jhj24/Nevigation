@@ -14,9 +14,9 @@ interface CommonNavigationBarLayout {
     fun getNavigationBarLayoutRes(): Int
 
     @IdRes
-    fun getNavigationBarImageViewId(): Int
+    fun getNavigationBarImageViewId(): Int?
 
     @IdRes
-    fun getNavigationBarTextViewId(): Int
+    fun getNavigationBarTextViewId(): Int?
 
 }

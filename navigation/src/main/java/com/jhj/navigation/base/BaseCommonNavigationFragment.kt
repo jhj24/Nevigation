@@ -12,14 +12,14 @@ import android.view.ViewGroup
  */
 abstract class BaseCommonNavigationFragment : Fragment() {
 
-    abstract val title: String
+    abstract val navigationText: String?
 
     @get:DrawableRes
-    abstract val iconDrawableRes: Int
+    abstract val imageResource: Int?
 
-    abstract val navigationBarLayoutRes: Int
+    abstract val fragmentLayoutRes: Int
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(navigationBarLayoutRes, container, false)
+        return inflater.inflate(fragmentLayoutRes, container, false)
     }
 }

@@ -14,12 +14,12 @@ interface GradientNavigationBarLayout {
     fun getNavigationBarLayoutRes(): Int
 
     @IdRes
-    fun getNavigationBarDefaultImageId(): Int
+    fun getNavigationBarImageViewId(): Int?
 
     @IdRes
-    fun getNavigationBarDefaultTextId(): Int
+    fun getNavigationBarDefaultTextViewId(): Int?
 
     @IdRes
-    fun getNavigationBarSelectedTextId(): Int
+    fun getNavigationBarSelectedTextViewId(): Int?
 
 }

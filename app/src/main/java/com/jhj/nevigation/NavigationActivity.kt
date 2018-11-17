@@ -1,16 +1,18 @@
 package com.jhj.nevigation
 
+import android.graphics.Color
 import android.os.Bundle
+import android.support.v4.view.ViewPager
 import com.jhj.navigation.base.BaseGradientNavigationActivity
 import com.jhj.navigation.base.BaseGradientNavigationFragment
 import com.jhj.navigation.layoutres.GradientNavigationBarLayout
-import com.jhj.navigation.layoutres.NavigationLayout
+import com.jhj.navigation.layoutres.NavigationRootLayout
 import kotlinx.android.synthetic.main.activity_navigation.*
 
 class NavigationActivity : BaseGradientNavigationActivity() {
 
-    override val layoutRes: NavigationLayout
-        get() = object : NavigationLayout {
+    override val rootLayout: NavigationRootLayout
+        get() = object : NavigationRootLayout {
 
             override fun getNavigationLayoutRes(): Int {
                 return R.layout.activity_navigation
@@ -26,21 +28,21 @@ class NavigationActivity : BaseGradientNavigationActivity() {
 
         }
 
-    override val layoutBottomBarRes: GradientNavigationBarLayout
+    override val navigationBarLayout: GradientNavigationBarLayout
         get() = object : GradientNavigationBarLayout {
             override fun getNavigationBarLayoutRes(): Int {
                 return R.layout.layout_buttom_item;
             }
 
-            override fun getNavigationBarDefaultImageId(): Int {
+            override fun getNavigationBarImageViewId(): Int {
                 return R.id.imageViewDefault
             }
 
-            override fun getNavigationBarDefaultTextId(): Int {
+            override fun getNavigationBarDefaultTextViewId(): Int {
                 return R.id.itemTitleDefault
             }
 
-            override fun getNavigationBarSelectedTextId(): Int {
+            override fun getNavigationBarSelectedTextViewId(): Int {
                 return R.id.itemTitleSelected
             }
 
@@ -54,6 +56,11 @@ class NavigationActivity : BaseGradientNavigationActivity() {
             list.add(getFragment(3, "我的", R.mipmap.main_me0))
             return list
         }
+
+    override val imageSelectedColor: Int?
+        get() = Color.RED
+
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

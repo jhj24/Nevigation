@@ -8,11 +8,11 @@ import kotlinx.android.synthetic.main.fragment_navigation.view.*
 class CommonNavigationFragment : BaseCommonNavigationFragment() {
 
 
-    override val title: String
+    override val navigationText: String
         get() = arguments?.getString("title") ?: "标题"
-    override val iconDrawableRes: Int
+    override val imageResource: Int
         get() = arguments?.getInt("imageDefault") ?: R.mipmap.main_me0
-    override val navigationBarLayoutRes: Int
+    override val fragmentLayoutRes: Int
         get() = R.layout.fragment_navigation
 
 

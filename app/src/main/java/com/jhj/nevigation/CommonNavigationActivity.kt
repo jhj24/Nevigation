@@ -4,13 +4,13 @@ import android.os.Bundle
 import com.jhj.navigation.base.BaseCommonNavigationActivity
 import com.jhj.navigation.base.BaseCommonNavigationFragment
 import com.jhj.navigation.layoutres.CommonNavigationBarLayout
-import com.jhj.navigation.layoutres.NavigationLayout
+import com.jhj.navigation.layoutres.NavigationRootLayout
 import kotlinx.android.synthetic.main.activity_navigation.*
 
 class CommonNavigationActivity : BaseCommonNavigationActivity() {
 
-    override val layoutRes: NavigationLayout
-        get() = object : NavigationLayout {
+    override val rootLayout: NavigationRootLayout
+        get() = object : NavigationRootLayout {
 
             override fun getNavigationLayoutRes(): Int {
                 return R.layout.activity_navigation
@@ -26,13 +26,13 @@ class CommonNavigationActivity : BaseCommonNavigationActivity() {
 
         }
 
-    override val layoutBottomBarRes: CommonNavigationBarLayout
+    override val navigationBarLayout: CommonNavigationBarLayout
         get() = object : CommonNavigationBarLayout {
-            override fun getNavigationBarImageViewId(): Int {
-                return R.id.imageViewDefault
+            override fun getNavigationBarImageViewId(): Int? {
+                return null
             }
 
-            override fun getNavigationBarTextViewId(): Int {
+            override fun getNavigationBarTextViewId(): Int? {
                 return R.id.itemTitleDefault
             }
 
