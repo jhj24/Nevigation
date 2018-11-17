@@ -22,6 +22,7 @@
         <activity android:name=".gradient.NavigationActivity" />
         <activity android:name=".common.CommonNavigationActivity" />
         <activity android:name=".common.CommonTextNavigationActivity" />
+        <activity android:name=".gradient.TestActivity" />
     </application>
 
 </manifest>

@@ -1,15 +1,17 @@
 package com.jhj.nevigation.gradient
 
-import android.graphics.Color
 import android.os.Bundle
+import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import com.jhj.navigation.base.BaseGradientNavigationActivity
-import com.jhj.navigation.base.BaseGradientNavigationFragment
 import com.jhj.navigation.layoutres.GradientNavigationBarLayout
 import com.jhj.navigation.layoutres.NavigationRootLayout
+import com.jhj.navigation.model.NavigationModel
+import com.jhj.nevigation.fragment.CommonFragment
 import com.jhj.nevigation.R
-import kotlinx.android.synthetic.main.activity_navigation.*
 
 class NavigationActivity : BaseGradientNavigationActivity() {
+
 
     override val rootLayout: NavigationRootLayout
         get() = object : NavigationRootLayout {
@@ -47,35 +49,32 @@ class NavigationActivity : BaseGradientNavigationActivity() {
             }
 
         }
-    override val fragmentList: List<BaseGradientNavigationFragment>
+
+    override val navigationList: List<NavigationModel>
         get() {
-            val list = arrayListOf<BaseGradientNavigationFragment>()
-            list.add(getFragment(0, "首页", R.mipmap.main_home0))
-            list.add(getFragment(1, "通讯录", R.mipmap.main_contacts_0))
-            list.add(getFragment(2, "功能", R.mipmap.main_function0))
-            list.add(getFragment(3, "我的", R.mipmap.main_me0))
+            val list = arrayListOf<NavigationModel>()
+            list.add(NavigationModel(getFragment(0, "首页"), "首页", R.mipmap.main_home0))
+            list.add(NavigationModel(getFragment(1, "通讯录"), "通讯录", R.mipmap.main_contacts_0))
+            list.add(NavigationModel(getFragment(2, "功能"), "功能", R.mipmap.main_function0))
+            list.add(NavigationModel(getFragment(3, "我的"), "我的", R.mipmap.main_me0))
             return list
         }
 
     override val imageSelectedColor: Int?
-        get() = Color.RED
-
-
+        get() = ContextCompat.getColor(this, R.color.colorAccent1)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
 
-
     }
 
-    private fun getFragment(status: Int, title: String, image: Int): NavigationFragment {
-        val fragment = NavigationFragment()
+    private fun getFragment(status: Int, title: String): Fragment {
+        val fragment = CommonFragment()
         val bundle = Bundle()
         bundle.putInt("status", status)
         bundle.putString("title", title)
-        bundle.putInt("imageDefault", image)
         fragment.arguments = bundle
         return fragment
     }

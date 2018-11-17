@@ -1,6 +1,7 @@
 package com.jhj.navigation.base
 
 import android.os.Bundle
+import android.support.annotation.ColorInt
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
@@ -13,6 +14,7 @@ import android.widget.TextView
 import com.jhj.navigation.layoutres.GradientNavigationBarLayout
 import com.jhj.navigation.layoutres.NavigationRootLayout
 import com.jhj.navigation.model.NavigationBarItem
+import com.jhj.navigation.model.NavigationModel
 import com.jhj.navigation.pagechangelistener.GradientPageChangeListener
 
 /**
@@ -25,9 +27,11 @@ abstract class BaseGradientNavigationActivity : AppCompatActivity() {
 
     abstract val rootLayout: NavigationRootLayout
     abstract val navigationBarLayout: GradientNavigationBarLayout
-    abstract val fragmentList: List<BaseGradientNavigationFragment>
+    abstract val navigationList: List<NavigationModel>
 
     open val pageChangeListener: ViewPager.OnPageChangeListener? = null
+
+    @ColorInt
     open val imageSelectedColor: Int? = null
 
     private val navigationBarItemList = arrayListOf<NavigationBarItem>()
@@ -39,9 +43,8 @@ abstract class BaseGradientNavigationActivity : AppCompatActivity() {
         val viewPager = findViewById<ViewPager>(rootLayout.getNavigationViewPagerId())
         val navigationBar = findViewById<ViewGroup>(rootLayout.getNavigationBarId())
 
+        navigationList.forEachIndexed { index, navigationModel ->
 
-        for (i in fragmentList.indices) {
-            val fragment = fragmentList[i]
             val view = inflater.inflate(navigationBarLayout.getNavigationBarLayoutRes(), navigationBar, false)
             val textDefault = navigationBarLayout.getNavigationBarDefaultTextViewId()?.let {
                 view.findViewById<TextView>(it)
@@ -55,20 +58,23 @@ abstract class BaseGradientNavigationActivity : AppCompatActivity() {
             val navigationBarItem = NavigationBarItem(textDefault, textSelected, imageViewDefault)
 
             view.setOnClickListener {
-                viewPager.setCurrentItem(i, false)
+                viewPager.setCurrentItem(index, false)
             }
             navigationBar.addView(view)
-            navigationBarItem.textViewSelected?.text = fragment.navigationText
-            navigationBarItem.textViewDefault?.text = fragment.navigationText
-            fragment.imageDefault?.let {
+
+            navigationModel.navigationBarText?.let {
+                navigationBarItem.textViewSelected?.text = it
+                navigationBarItem.textViewDefault?.text = it
+            }
+            navigationModel.navigationBarImageResource?.let {
                 navigationBarItem.imageViewDefault?.setImageResource(it)
             }
             navigationBarItemList.add(navigationBarItem)
+
         }
 
-
-        val listener = GradientPageChangeListener(viewPager, fragmentList, navigationBarItemList)
-        viewPager.adapter = MyPageAdapter(supportFragmentManager, fragmentList)
+        viewPager.adapter = MyPageAdapter(supportFragmentManager, navigationList.map { it.fragment })
+        val listener = GradientPageChangeListener(viewPager, navigationList.map { it.fragment }, navigationBarItemList)
         listener.setGradientResultColor(imageSelectedColor)
         listener.setOnPageChangeListener(pageChangeListener)
         viewPager.addOnPageChangeListener(listener)

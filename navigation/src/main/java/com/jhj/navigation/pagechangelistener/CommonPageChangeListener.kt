@@ -1,7 +1,7 @@
 package com.jhj.navigation.pagechangelistener
 
+import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
-import com.jhj.navigation.base.BaseCommonNavigationFragment
 import com.jhj.navigation.model.NavigationBarItem
 
 
@@ -12,7 +12,7 @@ import com.jhj.navigation.model.NavigationBarItem
  */
 class CommonPageChangeListener(
         private val viewPager: ViewPager,
-        private val fragmentList: List<BaseCommonNavigationFragment>,
+        private val fragmentList: List<Fragment>,
         private val navigationBarItemList: List<NavigationBarItem>) : ViewPager.OnPageChangeListener {
 
     private var listener: ViewPager.OnPageChangeListener? = null

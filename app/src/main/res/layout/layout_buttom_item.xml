@@ -35,8 +35,7 @@
         android:paddingRight="4dp"
         android:text="11"
         android:textColor="#ffffff"
-        android:textSize="10sp"
-        android:visibility="gone" />
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/itemTitleSelected"

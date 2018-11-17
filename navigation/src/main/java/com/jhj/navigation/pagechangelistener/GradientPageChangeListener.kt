@@ -1,9 +1,9 @@
 package com.jhj.navigation.pagechangelistener
 
 import android.graphics.Color
-import android.support.annotation.ColorRes
+import android.support.annotation.ColorInt
+import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager
-import com.jhj.navigation.base.BaseGradientNavigationFragment
 import com.jhj.navigation.model.NavigationBarItem
 
 
@@ -14,11 +14,11 @@ import com.jhj.navigation.model.NavigationBarItem
  */
 class GradientPageChangeListener(
         val viewPager: ViewPager,
-        private val fragmentList: List<BaseGradientNavigationFragment>,
+        private val fragmentList: List<Fragment>,
         private val navigationBarItemList: List<NavigationBarItem>) : ViewPager.OnPageChangeListener {
 
 
-    @ColorRes
+    @ColorInt
     private var imageSelectedColor: Int? = null
 
     private var listener: ViewPager.OnPageChangeListener? = null
@@ -28,7 +28,7 @@ class GradientPageChangeListener(
         this.listener = listener
     }
 
-    fun setGradientResultColor(@ColorRes color: Int?) {
+    fun setGradientResultColor(@ColorInt color: Int?) {
         this.imageSelectedColor = color
     }
 

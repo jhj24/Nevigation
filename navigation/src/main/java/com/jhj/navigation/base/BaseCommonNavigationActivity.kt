@@ -13,6 +13,7 @@ import android.widget.TextView
 import com.jhj.navigation.layoutres.CommonNavigationBarLayout
 import com.jhj.navigation.layoutres.NavigationRootLayout
 import com.jhj.navigation.model.NavigationBarItem
+import com.jhj.navigation.model.NavigationModel
 import com.jhj.navigation.pagechangelistener.CommonPageChangeListener
 
 /**
@@ -25,10 +26,9 @@ abstract class BaseCommonNavigationActivity : AppCompatActivity() {
 
     abstract val rootLayout: NavigationRootLayout
     abstract val navigationBarLayout: CommonNavigationBarLayout
-    abstract val fragmentList: List<BaseCommonNavigationFragment>
+    abstract val navigationList: List<NavigationModel>
 
     open val pageChangeListener: ViewPager.OnPageChangeListener? = null
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +38,8 @@ abstract class BaseCommonNavigationActivity : AppCompatActivity() {
         val viewPager = findViewById<ViewPager>(rootLayout.getNavigationViewPagerId())
         val navigationBar = findViewById<ViewGroup>(rootLayout.getNavigationBarId())
         val inflater = LayoutInflater.from(this)
-        viewPager.adapter = MyPageAdapter(supportFragmentManager, fragmentList)
 
-        for (i in fragmentList.indices) {
-            val fragment = fragmentList[i]
+        navigationList.forEachIndexed { index, navigationModel ->
             val view = inflater.inflate(navigationBarLayout.getNavigationBarLayoutRes(), navigationBar, false)
             val textDefault = navigationBarLayout.getNavigationBarTextViewId()?.let {
                 view.findViewById<TextView>(it)
@@ -52,18 +50,21 @@ abstract class BaseCommonNavigationActivity : AppCompatActivity() {
             val navigationBarItem = NavigationBarItem(textViewDefault = textDefault, imageViewDefault = imageViewDefault)
 
             view.setOnClickListener {
-                viewPager.setCurrentItem(i, false)
+                viewPager.setCurrentItem(index, false)
             }
             navigationBar.addView(view)
-            navigationBarItem.textViewDefault?.text = fragment.navigationText
-            fragment.imageResource?.let {
+            navigationModel.navigationBarText?.let {
+                navigationBarItem.textViewDefault?.text = it
+            }
+            navigationModel.navigationBarImageResource?.let {
                 navigationBarItem.imageViewDefault?.setImageResource(it)
             }
+
             navigationBarItemList.add(navigationBarItem)
         }
 
-
-        val listener = CommonPageChangeListener(viewPager, fragmentList, navigationBarItemList)
+        viewPager.adapter = MyPageAdapter(supportFragmentManager, navigationList.map { it.fragment })
+        val listener = CommonPageChangeListener(viewPager, navigationList.map { it.fragment }, navigationBarItemList)
         listener.setOnPageChangeListener(pageChangeListener)
         viewPager.addOnPageChangeListener(listener)
     }
