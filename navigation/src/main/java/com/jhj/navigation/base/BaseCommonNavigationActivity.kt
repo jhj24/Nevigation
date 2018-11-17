@@ -10,11 +10,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.jhj.navigation.layoutres.CommonNavigationBarLayout
-import com.jhj.navigation.layoutres.NavigationRootLayout
+import com.jhj.navigation.layout.CommonNavigationBarLayout
+import com.jhj.navigation.layout.NavigationRootLayout
 import com.jhj.navigation.model.NavigationBarItem
 import com.jhj.navigation.model.NavigationModel
-import com.jhj.navigation.pagechangelistener.CommonPageChangeListener
+import com.jhj.navigation.listener.CommonPageChangeListener
 
 /**
  * 普通基础 Activity

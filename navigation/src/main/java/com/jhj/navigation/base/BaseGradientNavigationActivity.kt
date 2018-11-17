@@ -11,11 +11,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import com.jhj.navigation.layoutres.GradientNavigationBarLayout
-import com.jhj.navigation.layoutres.NavigationRootLayout
+import com.jhj.navigation.layout.GradientNavigationBarLayout
+import com.jhj.navigation.layout.NavigationRootLayout
 import com.jhj.navigation.model.NavigationBarItem
 import com.jhj.navigation.model.NavigationModel
-import com.jhj.navigation.pagechangelistener.GradientPageChangeListener
+import com.jhj.navigation.listener.GradientPageChangeListener
 
 /**
  * 底部导航栏成渐变色变化的基础 Activity

@@ -1,14 +1,14 @@
-package com.jhj.navigation.layoutres
+package com.jhj.navigation.layout
 
 import android.support.annotation.IdRes
 import android.support.annotation.LayoutRes
 
 /**
- * 底部导航栏成渐变色的　Layout　信息
+ * 普通的底部导航栏　Layout　信息
  *
  * Created by jhj on 18-11-15.
  */
-interface GradientNavigationBarLayout {
+interface CommonNavigationBarLayout {
 
     @LayoutRes
     fun getNavigationBarLayoutRes(): Int
@@ -17,9 +17,6 @@ interface GradientNavigationBarLayout {
     fun getNavigationBarImageViewId(): Int?
 
     @IdRes
-    fun getNavigationBarDefaultTextViewId(): Int?
-
-    @IdRes
-    fun getNavigationBarSelectedTextViewId(): Int?
+    fun getNavigationBarTextViewId(): Int?
 
 }

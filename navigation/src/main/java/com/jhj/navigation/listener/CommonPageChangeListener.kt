@@ -1,4 +1,4 @@
-package com.jhj.navigation.pagechangelistener
+package com.jhj.navigation.listener
 
 import android.support.v4.app.Fragment
 import android.support.v4.view.ViewPager

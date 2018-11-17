@@ -1,4 +1,4 @@
-package com.jhj.navigation.layoutres
+package com.jhj.navigation.layout
 
 import android.support.annotation.IdRes
 import android.support.annotation.LayoutRes

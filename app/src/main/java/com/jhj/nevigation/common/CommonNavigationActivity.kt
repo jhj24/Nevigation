@@ -2,8 +2,8 @@ package com.jhj.nevigation.common
 
 import android.os.Bundle
 import com.jhj.navigation.base.BaseCommonNavigationActivity
-import com.jhj.navigation.layoutres.CommonNavigationBarLayout
-import com.jhj.navigation.layoutres.NavigationRootLayout
+import com.jhj.navigation.layout.CommonNavigationBarLayout
+import com.jhj.navigation.layout.NavigationRootLayout
 import com.jhj.navigation.model.NavigationModel
 import com.jhj.nevigation.fragment.CommonFragment
 import com.jhj.nevigation.R

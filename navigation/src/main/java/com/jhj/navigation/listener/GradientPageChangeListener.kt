@@ -1,4 +1,4 @@
-package com.jhj.navigation.pagechangelistener
+package com.jhj.navigation.listener
 
 import android.graphics.Color
 import android.support.annotation.ColorInt

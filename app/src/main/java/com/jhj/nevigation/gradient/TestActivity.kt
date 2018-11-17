@@ -8,7 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter
 import android.support.v7.app.AppCompatActivity
 import android.view.LayoutInflater
 import com.jhj.navigation.model.NavigationBarItem
-import com.jhj.navigation.pagechangelistener.GradientPageChangeListener
+import com.jhj.navigation.listener.GradientPageChangeListener
 import com.jhj.nevigation.R
 import com.jhj.nevigation.fragment.CommonFragment
 import kotlinx.android.synthetic.main.activity_navigation.*

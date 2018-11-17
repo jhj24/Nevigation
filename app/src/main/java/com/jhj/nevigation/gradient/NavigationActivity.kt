@@ -4,8 +4,8 @@ import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.content.ContextCompat
 import com.jhj.navigation.base.BaseGradientNavigationActivity
-import com.jhj.navigation.layoutres.GradientNavigationBarLayout
-import com.jhj.navigation.layoutres.NavigationRootLayout
+import com.jhj.navigation.layout.GradientNavigationBarLayout
+import com.jhj.navigation.layout.NavigationRootLayout
 import com.jhj.navigation.model.NavigationModel
 import com.jhj.nevigation.fragment.CommonFragment
 import com.jhj.nevigation.R
