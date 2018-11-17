@@ -41,9 +41,10 @@ data class NavigationBarItem(
     <item android:color="#999999" />
 
 </selector>
-``` xml
+``` 
+
 - 图片selector样式
-```
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <!--选中的颜色-->
