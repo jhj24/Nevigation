@@ -10,28 +10,32 @@
 
 
 #### 2.1 监听器
-- CommonPageChangeListener(val viewPager: ViewPager,val fragmentList: List<Fragment>,val navigationBarItemList: List<NavigationBarItem>)
+- 默认样式
+```java
+CommonPageChangeListener(val viewPager: ViewPager,val fragmentList: List<Fragment>,val navigationBarItemList: List<NavigationBarItem>)
+```
 
-- GradientPageChangeListener(val viewPager: ViewPager,val fragmentList: List<Fragment>,val navigationBarItemList: List<NavigationBarItem>)
-
+- 渐变样式
+```java
+GradientPageChangeListener(val viewPager: ViewPager,val fragmentList: List<Fragment>,val navigationBarItemList: List<NavigationBarItem>)
+```
 #### 2.2 NavigationBarItem 中参数解析
 
 ``` kotlin
 data class NavigationBarItem(
-
-        // 默认样式，设置如下颜色selector样式；  渐变色时，TextView的textColor为默认样式
-        var textViewDefault: TextView? = null, 
-        
-        // 模式样式，为null即可； 渐变色时，TextView的textColor为选中样式
-        var textViewSelected: TextView? = null, 
-        
-        // 默认样式时，设置如下图片selector颜色； 渐变色时，设置默认图片；
-        var imageViewDefault: ImageView? = null 
+     var textViewDefault: TextView? = null, 
+     var textViewSelected: TextView? = null, 
+     var imageViewDefault: ImageView? = null 
 )
 ```
 
+|| 默认样式 | 渐变样式
+|------|------|------
+|textViewDefault|字体selector样式，如下 | 未选中时的textColor
+|textViewSelected|为null即可 |选中时的textColor
+|imageViewDefault|图片selector样式，如下 |未选中时图片
 
-- 颜色selector样式
+- 字体selector样式
 ``` xml
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
@@ -57,8 +61,10 @@ data class NavigationBarItem(
 
 ### 实现
 
+- 继承`FragmentActivity`或其子类，设置`addOnPageChangeListener()` 监听器,
+
 - 继承`BaseCommonNavigationActivity` 或 `BaseGradientNavitationActivity` 实现里面的方法即可
 
-- 继承`FragmentActivity`或其子类，设置`addOnPageChangeListener()` 监听器,
+
 
 
