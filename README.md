@@ -61,9 +61,9 @@ data class NavigationBarItem(
 
 ### 实现
 
-- 继承`FragmentActivity`或其子类，设置`addOnPageChangeListener()` 监听器,
+- 继承`FragmentActivity`或其子类，设置`addOnPageChangeListener()` 监听器,监听器如上面的两种。这种实现起来比较方便，使用，可以在自己的BaseActivity中实现。
 
-- 继承`BaseCommonNavigationActivity` 或 `BaseGradientNavitationActivity` 实现里面的方法即可
+- 继承`BaseCommonNavigationActivity` 或 `BaseGradientNavitationActivity` 实现里面的方法即可，
 
 
 
