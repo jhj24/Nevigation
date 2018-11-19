@@ -31,9 +31,9 @@ data class NavigationBarItem(
 
 || 默认样式 | 渐变样式
 |------|------|------
-|textViewDefault|字体selector样式，如下 | 未选中时的textColor
-|textViewSelected|为null即可 |选中时的textColor
-|imageViewDefault|图片selector样式，如下 |未选中时图片
+|textViewDefault|文字TextView控件，设置textColor为selector样式 | 未选中时的TextView控件，设置textColor未选中时颜色
+|textViewSelected|为null即可 |选中时的TextView控件，设置textColor选中时颜色
+|imageViewDefault|图片ImageView控件，图片selector样式 |图片ImageView控件，设置默认图片
 
 - 字体selector样式
 ``` xml
