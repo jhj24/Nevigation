@@ -2,6 +2,7 @@ package com.jhj.nevigation
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import com.jhj.nevigation.common.CommonActivity
 import com.jhj.nevigation.common.CommonNavigationActivity
 import com.jhj.nevigation.common.CommonTextNavigationActivity
 import com.jhj.nevigation.gradient.NavigationActivity
@@ -25,8 +26,11 @@ class MainActivity : AppCompatActivity() {
             startActivity<CommonTextNavigationActivity>()
         }
 
-        btn_common.setOnClickListener {
+        btn_common_gradient.setOnClickListener {
             startActivity<TestActivity>()
+        }
+        btn_common.setOnClickListener {
+            startActivity<CommonActivity>()
         }
     }
 

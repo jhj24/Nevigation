@@ -61,7 +61,7 @@ class NavigationActivity : BaseGradientNavigationActivity() {
         }
 
     override val imageSelectedColor: Int?
-        get() = ContextCompat.getColor(this, R.color.colorAccent1)
+        get() = ContextCompat.getColor(this, R.color.colorAccent)
 
 
     override fun onCreate(savedInstanceState: Bundle?) {

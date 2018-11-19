@@ -23,6 +23,7 @@
         <activity android:name=".common.CommonNavigationActivity" />
         <activity android:name=".common.CommonTextNavigationActivity" />
         <activity android:name=".gradient.TestActivity" />
+        <activity android:name=".common.CommonActivity" />
     </application>
 
 </manifest>
