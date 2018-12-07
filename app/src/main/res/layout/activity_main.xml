@@ -6,39 +6,19 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/btn_gradient"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="继承BaseGradientNavigationActivity,渐变色"
-        android:textAllCaps="false" />
-
-    <Button
-        android:id="@+id/btn_default"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="继承BaseCommonNavigationActivity,默认选中样式"
-        android:textAllCaps="false" />
-
-    <Button
-        android:id="@+id/btn_top_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="继承BaseCommonNavigationActivity,顶部只有文字"
-        android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btn_common_gradient"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="没有继承基础Activity，渐变色"
+        android:text="滑动渐变色"
         android:textAllCaps="false" />
 
     <Button
         android:id="@+id/btn_common"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="没有继承基础Activity，渐变色"
+        android:text="滑动正常色"
         android:textAllCaps="false" />
 
 </LinearLayout>

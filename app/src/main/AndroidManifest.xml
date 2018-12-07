@@ -19,11 +19,10 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".gradient.NavigationActivity" />
-        <activity android:name=".common.CommonNavigationActivity" />
-        <activity android:name=".common.CommonTextNavigationActivity" />
-        <activity android:name=".gradient.TestActivity" />
-        <activity android:name=".common.CommonActivity" />
+        <activity android:name=".complex.NavigationActivity" />
+        <activity android:name=".complex.CommonNavigationActivity" />
+        <activity android:name=".GradientActivity" />
+        <activity android:name=".CommonActivity" />
     </application>
 
 </manifest>

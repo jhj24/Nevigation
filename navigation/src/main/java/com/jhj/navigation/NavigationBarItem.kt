@@ -1,4 +1,4 @@
-package com.jhj.navigation.model
+package com.jhj.navigation
 
 import android.widget.ImageView
 import android.widget.TextView

@@ -1,26 +1,35 @@
-package com.jhj.navigation.listener
+package com.jhj.navigation
 
+import android.graphics.Color
+import android.support.annotation.ColorRes
 import android.support.v4.app.Fragment
+import android.support.v4.content.ContextCompat
 import android.support.v4.view.ViewPager
-import com.jhj.navigation.model.NavigationBarItem
 
 
 /**
- * 普通的ViewPager变化监听器
+ * 底部导航栏成渐变色的ViewPager监听器
  *
  * Created by jhj on 18-11-15.
  */
-class CommonPageChangeListener(
-        private val viewPager: ViewPager,
+class GradientPageChangeListener(
+        val viewPager: ViewPager,
         private val fragmentList: List<Fragment>,
         private val navigationBarItemList: List<NavigationBarItem>) : ViewPager.OnPageChangeListener {
 
+
+    private var imageSelectedColor: Int? = null
     private var listener: ViewPager.OnPageChangeListener? = null
 
 
     fun setOnPageChangeListener(listener: ViewPager.OnPageChangeListener?) {
         this.listener = listener
     }
+
+    fun setGradientResultColor(@ColorRes color: Int?) {
+        this.imageSelectedColor = color
+    }
+
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
         val currentItem = viewPager.currentItem
@@ -32,16 +41,16 @@ class CommonPageChangeListener(
             nextItem = currentItem + 1
             val barItemCurrent = navigationBarItemList[currentItem]
             val barItemNext = navigationBarItemList[nextItem]
-            setBottomBarItemSelected(barItemCurrent, 1f)
-            setBottomBarItemSelected(barItemNext, 0f)
+            setBottomBarItemSelected(barItemCurrent, 1 - positionOffset)
+            setBottomBarItemSelected(barItemNext, positionOffset)
         } else {//向左
             if (currentItem == 0)
                 return
             nextItem = currentItem - 1
             val barItemCurrent = navigationBarItemList[currentItem]
             val barItemNext = navigationBarItemList[nextItem]
-            setBottomBarItemSelected(barItemCurrent,1f)
-            setBottomBarItemSelected(barItemNext, 0f)
+            setBottomBarItemSelected(barItemCurrent, positionOffset)
+            setBottomBarItemSelected(barItemNext, 1 - positionOffset)
         }
         listener?.onPageScrolled(position, positionOffset, positionOffsetPixels)
     }
@@ -67,14 +76,24 @@ class CommonPageChangeListener(
 
 
     private fun setBottomBarItemSelected(navigationBarItem: NavigationBarItem, percent: Float) {
+        navigationBarItem.textViewSelected?.alpha = percent
+        navigationBarItem.textViewDefault?.alpha = 1 - percent
 
-        if (percent == 1f) {
-            navigationBarItem.textViewDefault?.isSelected = true
-            navigationBarItem.imageViewDefault?.isSelected = true
+        navigationBarItem.imageViewDefault?.scaleX = 1f + 0.15f * percent
+        navigationBarItem.imageViewDefault?.scaleY = 1f + 0.15f * percent
 
+        val selectorColor = if (imageSelectedColor != null) {
+            ContextCompat.getColor(viewPager.context, imageSelectedColor!!)
         } else {
-            navigationBarItem.textViewDefault?.isSelected = false
-            navigationBarItem.imageViewDefault?.isSelected = false
+            navigationBarItem.textViewSelected?.currentTextColor
+        }
+
+        selectorColor?.let {
+            navigationBarItem.imageViewDefault?.setColorFilter(Color.argb(
+                    (0xFF * percent).toInt(),
+                    Color.red(it),
+                    Color.green(it),
+                    Color.blue(it)))
         }
     }
 }
