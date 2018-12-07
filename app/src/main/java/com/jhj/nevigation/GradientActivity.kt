@@ -53,6 +53,7 @@ class GradientActivity : AppCompatActivity() {
 
         val listener = GradientPageChangeListener(viewPager, fragmentList, navigationBarItemList)
         listener.setGradientResultColor(R.color.colorAccent)
+        listener.setItemSelectedImgBigger(false)
         //listener.setOnPageChangeListener(pageChangeListener)
         viewPager.addOnPageChangeListener(listener)
 

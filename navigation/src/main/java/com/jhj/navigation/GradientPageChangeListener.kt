@@ -20,7 +20,7 @@ class GradientPageChangeListener(
 
     private var imageSelectedColor: Int? = null
     private var listener: ViewPager.OnPageChangeListener? = null
-
+    private var isItemSelectedImgBigger = true
 
     fun setOnPageChangeListener(listener: ViewPager.OnPageChangeListener?) {
         this.listener = listener
@@ -28,6 +28,10 @@ class GradientPageChangeListener(
 
     fun setGradientResultColor(@ColorRes color: Int?) {
         this.imageSelectedColor = color
+    }
+
+    fun setItemSelectedImgBigger(isBigger: Boolean) {
+        isItemSelectedImgBigger = isBigger
     }
 
 
@@ -79,8 +83,10 @@ class GradientPageChangeListener(
         navigationBarItem.textViewSelected?.alpha = percent
         navigationBarItem.textViewDefault?.alpha = 1 - percent
 
-        navigationBarItem.imageViewDefault?.scaleX = 1f + 0.15f * percent
-        navigationBarItem.imageViewDefault?.scaleY = 1f + 0.15f * percent
+        if (isItemSelectedImgBigger) {
+            navigationBarItem.imageViewDefault?.scaleX = 1f + 0.15f * percent
+            navigationBarItem.imageViewDefault?.scaleY = 1f + 0.15f * percent
+        }
 
         val selectorColor = if (imageSelectedColor != null) {
             ContextCompat.getColor(viewPager.context, imageSelectedColor!!)

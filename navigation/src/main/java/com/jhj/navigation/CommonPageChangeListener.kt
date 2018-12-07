@@ -15,10 +15,15 @@ class CommonPageChangeListener(
         private val navigationBarItemList: List<NavigationBarItem>) : ViewPager.OnPageChangeListener {
 
     private var listener: ViewPager.OnPageChangeListener? = null
+    private var isItemSelectedImgBigger = true
 
 
     fun setOnPageChangeListener(listener: ViewPager.OnPageChangeListener?) {
         this.listener = listener
+    }
+
+    fun setItemSelectedImgBigger(isBigger: Boolean) {
+        isItemSelectedImgBigger = isBigger
     }
 
     override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
@@ -68,9 +73,17 @@ class CommonPageChangeListener(
     private fun setBottomBarItemSelected(navigationBarItem: NavigationBarItem, percent: Float) {
 
         if (percent == 1f) {
+            if (isItemSelectedImgBigger) {
+                navigationBarItem.imageViewDefault?.scaleX = 1f + 0.15f * percent
+                navigationBarItem.imageViewDefault?.scaleY = 1f + 0.15f * percent
+            }
             navigationBarItem.textViewDefault?.isSelected = true
             navigationBarItem.imageViewDefault?.isSelected = true
         } else {
+            if (isItemSelectedImgBigger) {
+                navigationBarItem.imageViewDefault?.scaleX = 1f
+                navigationBarItem.imageViewDefault?.scaleY = 1f
+            }
             navigationBarItem.textViewDefault?.isSelected = false
             navigationBarItem.imageViewDefault?.isSelected = false
         }
