@@ -2,10 +2,10 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!--选中的颜色-->
-    <item android:drawable="@drawable/main_me1" android:state_selected="true" />
+    <item android:drawable="@drawable/main_me_pressed" android:state_selected="true" />
 
     <!--默认的颜色-->
-    <item android:drawable="@drawable/main_me0" />
+    <item android:drawable="@drawable/main_me_normal" />
 
 
 </selector>

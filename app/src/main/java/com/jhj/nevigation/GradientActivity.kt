@@ -1,6 +1,5 @@
 package com.jhj.nevigation
 
-import android.graphics.Color
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
@@ -32,7 +31,7 @@ class GradientActivity : AppCompatActivity() {
 
 
         fragmentList.forEachIndexed { index, fragment ->
-            val view = LayoutInflater.from(this).inflate(R.layout.layout_buttom_item, layout_navigation, false)
+            val view = LayoutInflater.from(this).inflate(R.layout.layout_buttom_gradient, layout_navigation, false)
             val navigationBarItem = NavigationBarItem(
                     textViewDefault = view.findViewById(R.id.itemTitleDefault),
                     textViewSelected = view.findViewById(R.id.itemTitleSelected),
@@ -53,7 +52,7 @@ class GradientActivity : AppCompatActivity() {
         viewPager.adapter = MyPageAdapter(supportFragmentManager, fragmentList)
 
         val listener = GradientPageChangeListener(viewPager, fragmentList, navigationBarItemList)
-        //listener.setGradientResultColor(R.color.colorAccent)
+        listener.setGradientResultColor(R.color.colorAccent)
         //listener.setOnPageChangeListener(pageChangeListener)
         viewPager.addOnPageChangeListener(listener)
 

@@ -13,7 +13,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="2dp"
         android:padding="3dp"
-        android:src="@mipmap/main_function0" />
+        android:src="@drawable/main_function_normal" />
 
     <View
         android:id="@+id/line"

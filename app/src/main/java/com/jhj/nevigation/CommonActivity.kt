@@ -31,7 +31,7 @@ class CommonActivity : AppCompatActivity() {
 
 
         fragmentList.forEachIndexed { index, fragment ->
-            val view = LayoutInflater.from(this).inflate(R.layout.layout_buttom_item1, layout_navigation, false)
+            val view = LayoutInflater.from(this).inflate(R.layout.layout_buttom_common, layout_navigation, false)
             val navigationBarItem = NavigationBarItem(
                     textViewDefault = view.findViewById(R.id.itemTitleDefault),
                     imageViewDefault = view.findViewById(R.id.imageViewDefault))
