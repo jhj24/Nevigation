@@ -1,24 +1,24 @@
 # Nevigation
 ### ViewPager导航栏
 
-### 1. 两种导航栏
+通过ViewPager的滑动监听器`addPagerChangeListener()`来设置导航栏，在此封装了有两种样式的滑动监听
+
+### 1. 样式
 
 - 默认样式，滑动到指定位置时，设置选中为选中颜色
-- 渐变样式，随手指滑动界面的百分比逐渐变化
 
-### 2. 方法解析
-
-
-#### 2.1 监听器
-- 默认样式
 ```java
 CommonPageChangeListener(val viewPager: ViewPager,val fragmentList: List<Fragment>,val navigationBarItemList: List<NavigationBarItem>)
 ```
 
-- 渐变样式
+- 渐变样式，随手指滑动界面的百分比逐渐变化
+
 ```java
 GradientPageChangeListener(val viewPager: ViewPager,val fragmentList: List<Fragment>,val navigationBarItemList: List<NavigationBarItem>)
 ```
+
+### 2. 方法解析
+
 #### 2.2 NavigationBarItem 中参数解析
 
 ``` kotlin
@@ -58,12 +58,9 @@ data class NavigationBarItem(
 
 </selector>
 ```
-
-### 实现
-
-- 继承`FragmentActivity`或其子类，设置`addOnPageChangeListener()` 监听器,监听器如上面的两种。这种实现起来比较方便，使用，可以在自己的BaseActivity中实现。
-
-- 继承`BaseCommonNavigationActivity` 或 `BaseGradientNavitationActivity` 实现里面的方法即可，
+- setOnPageChangeListener(listener: ViewPager.OnPageChangeListener?)
+- setGradientResultColor(@ColorRes color: Int?)
+- setItemSelectedImgBigger(isBigger: Boolean)
 
 
 
