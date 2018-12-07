@@ -1,5 +1,4 @@
 # Nevigation
-### ViewPager导航栏
 
 通过ViewPager的滑动监听器`addPagerChangeListener()`来设置导航栏，在此封装了有两种样式的滑动监听
 
