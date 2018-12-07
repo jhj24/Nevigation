@@ -8,18 +8,17 @@
 - 默认样式，滑动到指定位置时，设置选中为选中颜色
 
 ```java
-CommonPageChangeListener(val viewPager: ViewPager,val fragmentList: List<Fragment>,val navigationBarItemList: List<NavigationBarItem>)
+CommonPageChangeListener( ViewPager,List<Fragment>,List<NavigationBarItem>)
 ```
 
 - 渐变样式，随手指滑动界面的百分比逐渐变化
 
 ```java
-GradientPageChangeListener(val viewPager: ViewPager,val fragmentList: List<Fragment>,val navigationBarItemList: List<NavigationBarItem>)
+GradientPageChangeListener(ViewPager,List<Fragment>,List<NavigationBarItem>)
 ```
 
-### 2. 方法解析
 
-#### 2.2 NavigationBarItem 中参数解析
+#### 2. NavigationBarItem 中参数解析
 
 ``` kotlin
 data class NavigationBarItem(
@@ -58,9 +57,12 @@ data class NavigationBarItem(
 
 </selector>
 ```
-- setOnPageChangeListener(listener: ViewPager.OnPageChangeListener?)
-- setGradientResultColor(@ColorRes color: Int?)
-- setItemSelectedImgBigger(isBigger: Boolean)
+
+### 3. listener公开方法
+
+- setOnPageChangeListener(listener: ViewPager.OnPageChangeListener?) // 滑动监听
+- setGradientResultColor(@ColorRes color: Int?) // 渐变导航栏，图片选择时的颜色
+- setItemSelectedImgBigger(isBigger: Boolean) // item选中时，图片是否变大
 
 
 
