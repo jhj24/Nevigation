@@ -34,19 +34,15 @@ class CommonPageChangeListener(
             if (currentItem == fragmentList.size - 1)
                 return
             nextItem = currentItem + 1
-            val barItemCurrent = navigationBarItemList[currentItem]
-            val barItemNext = navigationBarItemList[nextItem]
-            setBottomBarItemSelected(barItemCurrent, 1f)
-            setBottomBarItemSelected(barItemNext, 0f)
         } else {//向左
             if (currentItem == 0)
                 return
             nextItem = currentItem - 1
-            val barItemCurrent = navigationBarItemList[currentItem]
-            val barItemNext = navigationBarItemList[nextItem]
-            setBottomBarItemSelected(barItemCurrent,1f)
-            setBottomBarItemSelected(barItemNext, 0f)
         }
+        val barItemCurrent = navigationBarItemList[currentItem]
+        val barItemNext = navigationBarItemList[nextItem]
+        setBottomBarItemSelected(barItemCurrent,1f)
+        setBottomBarItemSelected(barItemNext, 0f)
         listener?.onPageScrolled(position, positionOffset, positionOffsetPixels)
     }
 
